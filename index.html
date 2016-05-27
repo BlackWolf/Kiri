@@ -10,9 +10,13 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/vendor/normalize.css">
+        <link rel="stylesheet" href="css/vendor/html5boilerplate.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+        <link rel="stylesheet" href="css/vendor/flexboxgrid.css">
+
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,11 +24,40 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        
+
+
+
+
+        <section class="block block--text">
+            <div class="block-content">
+                <h1 class="block-heading">This is some title</h1>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="block-subcontent">
+                            <p>Asymmetrical irony humblebrag man bun, chartreuse small batch direct trade cornhole meggings. Wayfarers freegan brooklyn, tote bag heirloom seitan semiotics marfa. Franzen meh kogi, pop-up gastropub etsy aesthetic neutra flexitarian bespoke. Etsy mumblecore hashtag cronut crucifix gastropub disrupt DIY farm-to-table, echo park blog. Messenger bag echo park next level, normcore ugh keffiyeh humblebrag meh polaroid mumblecore cronut tote bag pitchfork. Pour-over keytar cronut beard hashtag quinoa raw denim, schlitz cray. Sustainable squid pug, humblebrag gastropub 90's church-key tumblr lo-fi tote bag deep v.
+
+                            Kogi iPhone before they sold out, shabby chic tumblr gentrify XOXO. Trust fund fixie aesthetic, plaid kombucha pitchfork sartorial brunch. Man bun ugh brunch drinking vinegar, wayfarers dreamcatcher yr tilde cold-pressed beard salvia tousled photo booth. Marfa helvetica retro readymade polaroid ramps. Sustainable keytar shoreditch pour-over kinfolk meditation schlitz, etsy venmo. Church-key franzen street art, ethical etsy post-ironic dreamcatcher humblebrag vinyl health goth tilde. Cray skateboard butcher celiac actually.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="block-subcontent">
+                            <p>Pop-up gochujang biodiesel selfies, pork belly pinterest hella. Ennui 8-bit meggings slow-carb etsy. Quinoa locavore deep v, lo-fi tote bag biodiesel waistcoat kitsch 8-bit church-key umami wayfarers pinterest chicharrones jean shorts. Umami lo-fi celiac pork belly, echo park post-ironic etsy chambray keytar pour-over microdosing. Offal etsy poutine normcore, waistcoat meggings celiac ennui twee humblebrag bespoke paleo fixie cardigan kogi. Kombucha mustache gluten-free plaid, roof party fap church-key aesthetic truffaut. Typewriter truffaut VHS echo park master cleanse.
+
+                            Truffaut cold-pressed humblebrag shoreditch, helvetica ugh organic PBR&B. Sartorial slow-carb bicycle rights quinoa. Truffaut mixtape try-hard occupy pickled butcher, literally fixie art party lomo swag. Meggings franzen williamsburg meh meditation, knausgaard church-key YOLO you probably haven't heard of them chicharrones bitters migas. Polaroid mustache shoreditch, umami yr seitan wayfarers cred schlitz. Affogato slow-carb migas, readymade kogi single-origin coffee normcore twee shabby chic next level flannel skateboard brunch yuccie asymmetrical. Drinking vinegar polaroid selfies single-origin coffee kickstarter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
+        <script src="js/vendor/html5boilerplate.js"></script>
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -36,5 +69,16 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
+
+        <!-- baseliner for debugging typography -->
+        <script src="http://files.keyes.ie/things/baseliner/baseliner-latest.min.js">
+</script>
+<script>
+window.onload = function() {
+    baseliner = new Baseliner({ gridHeight: 12, gridOffset: 1, gridColor: 'black'})
+        // .create()
+        ;
+}
+</script>
     </body>
 </html>

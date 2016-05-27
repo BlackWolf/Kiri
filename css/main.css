@@ -1,282 +1,107 @@
-/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
-
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
 /* ==========================================================================
-   Base styles: opinionated defaults
+   Base styles
    ========================================================================== */
 
+/* We define two important font-related things here:
+    1. font-size is set to 1rem, which ensures the user's preferred font size
+    2. line-height is set to 1.5rem, defining the basic size of our baseline grid.
+        Every vertical spacing (line-height, margin/padding top/bottom) must be
+        set to a multiple of this. We stay with rem here because px is not flexible
+        enough and calculating em gets really ugly, particularly for headings 
+*/
 html {
-    color: #222;
+    color: black;
     font-size: 1em;
-    line-height: 1.4;
+    line-height: 1.5rem; /* determined via golden ratio, see http://www.pearsonified.com/typography/ */
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+/* STUPID FLEXBOXLAYOUT FIXES. BOO  */
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-    resize: vertical;
+.row > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 /* ==========================================================================
-   Browser Upgrade Prompt
+   Base typography
    ========================================================================== */
 
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+/* Again, some important typography-things here:
+    1. font-size is set to the golden ratio, see http://type-scale.com/
+    2. As discussed, things like margin and line-height must be set to a multiple
+       of the original line-height to adhere to the baseline grid. Although we
+       have a line-height of 1.5rem, we can use multiples of 0.75rem and still
+       have a nice vertical rythm. See https://www.smashingmagazine.com/2012/12/css-baseline-the-good-the-bad-and-the-ugly/
+*/
+h1 {
+    font-size: 2.618rem; 
+    line-height: 3rem;
+
+    margin-top: 2.25rem;
+    margin-bottom: 1.5rem;
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
+p {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
 
+    max-width: 30em; /* gives us ~70 CPL (characters per line) */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden {
-    display: none !important;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
+/* Important here: Contrast ratio between text color and bg color adheres to W3C
+    accessibility standards and is at least 4.5 -- see http://leaverou.github.io/contrast-ratio
+*/
+/* This defines a basic block. Multiple of those are chained below each other to
+    make up our one pager. Some important styles are defined here that adhere
+    to every block. Some things (like padding) can be overwritten by subblock classes:
+    1. background color must be defined here to ensure it spans the entire window width
+    2. padding top and bottom are defined here - these paddings will also be filled
+        with the bg color and therefore be perceived as part of the block. Also, these
+        padding surround the entire block content, including heading and other things.
+*/
+.block {
+    background-color: rgb(160, 100, 100); 
 
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+    padding-top: 4.5rem;
+    padding-bottom: 3rem;
 }
 
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
+/*@media (max-width: 768px) {
+    .block {
+        padding-top: 3rem;
+        padding-bottom: 1.5rem;
+    }
+}*/
 
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+/* Defines the heading that most blocks have.
+    TODO: Figure out if this is the right way to do it. This way, we could combine
+    a block heading with h1, h2 etc. But shouldn't a block heading always be the
+    same height? Then, a block-heading should be a div, not a h */
+.block-heading {
+    text-align: center;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-    visibility: hidden;
+/* We define the actual content width here. We can not do that anywhere higher in
+    the hierarchy because we want the background of the blocks to span the entire
+    width of the window, but the actual content to be limited in width
+*/
+.block-content {
+    max-width: 1000px; 
+    margin: 0 auto;
+    /*margin-top: 3rem;*/
 }
 
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-    *,
-    *:before,
-    *:after,
-    *:first-letter,
-    *:first-line {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
+@media (max-width: 768px) {
+    .block-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
